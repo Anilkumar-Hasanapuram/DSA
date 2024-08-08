@@ -1,32 +1,34 @@
 class Solution {
     public int calPoints(String[] operations) {
         int value=0;
-        List<Integer> list=new ArrayList<>();
+        Stack<Integer> stack=new Stack<>();
         for(String v:operations)
         {
-            
-            if(!v.equals("C") && !v.equals("D") && !v.equals("+"))
+            if(v.equals("+"))
             {
-                list.add(Integer.parseInt(v)); 
+                int a=stack.pop();
+                int b=stack.peek();
+                stack.push(a);
+                stack.push(a+b);
             }
             else if(v.equals("C"))
             {
-                list.remove(list.size()-1);
+                stack.pop();
             }
             else if(v.equals("D"))
             {
-                list.add(list.get(list.size()-1)*2);
+                stack.push(stack.peek()*2);
             }
-            else if(v.equals("+"))
+            else
             {
-                list.add(list.get(list.size()-1)+list.get(list.size()-2));
+                stack.push(Integer.parseInt(v));
             }
         }
-        for(int v:list)
+        while(!stack.isEmpty())
         {
-            value+=v;
+            value+=stack.pop();
         }
-        System.out.println(list);
         return value;
+        
     }
 }
