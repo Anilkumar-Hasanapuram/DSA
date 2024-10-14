@@ -1,21 +1,22 @@
-import java.util.*;
 class Solution {
     public String mergeAlternately(String word1, String word2) {
-        StringBuffer sb=new StringBuffer();
-        int length=Math.min(word1.length(),word2.length());
-        for(int i=0;i<length;i++)
+        StringBuilder sb=new StringBuilder();
+        int value=0;
+        for(int i=0;i<word1.length() && i<word2.length();i++)
         {
             sb.append(word1.charAt(i));
             sb.append(word2.charAt(i));
+            value++;
         }
-        if(word1.length()>length)
+        if(word1.length()<word2.length())
         {
-            sb.append(word1.substring(length));
+            sb.append(word2.substring(value));
         }
-        else if(word2.length()>length)
+        else
         {
-            sb.append(word2.substring(length));
+            sb.append(word1.substring(value));
         }
         return sb.toString();
+        
     }
 }
