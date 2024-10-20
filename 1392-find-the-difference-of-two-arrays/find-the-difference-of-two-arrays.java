@@ -15,7 +15,7 @@ class Solution {
         List<Integer> l2=new ArrayList<>(n2);
         l1.removeAll(n2);
         l2.removeAll(n1);
-        List<List<Integer>> li=new ArrayList<List<Integer>>();
+        List<List<Integer>> li=new ArrayList<>();
         System.out.println(l1+" "+l2);
         li.add(l1);
         li.add(l2);
