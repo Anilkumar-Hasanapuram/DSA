@@ -1,15 +1,27 @@
 import java.util.*;
 class Solution {
     public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
-        List<List<Integer>> list=new ArrayList<List<Integer>>();
-        List<Integer> s=Arrays.stream(nums1).boxed().collect(Collectors.toList());
-        List<Integer> s1=Arrays.stream(nums2).boxed().collect(Collectors.toList());
-        List<Integer> v=s.stream().filter(num->!s1.contains(num)).collect(Collectors.toList());
-        List<Integer> v1=s1.stream().filter(num->!s.contains(num)).collect(Collectors.toList());
-        System.out.println(v+" "+v1);
-        list.add(new ArrayList<>(new HashSet<Integer>(v)));
-        list.add(new ArrayList<>(new HashSet<Integer>(v1)));
-        return list;
+        Set<Integer> n1=new HashSet<Integer>();
+        for(int value:nums1)
+        {
+            n1.add(value);
+        }
+        Set<Integer> n2=new HashSet<Integer>();
+        for(int value:nums2)
+        {
+            n2.add(value);
+        }
+        List<Integer> l1=new ArrayList<>(n1);
+        List<Integer> l2=new ArrayList<>(n2);
+        l1.removeAll(n2);
+        l2.removeAll(n1);
+        List<List<Integer>> li=new ArrayList<List<Integer>>();
+        System.out.println(l1+" "+l2);
+        li.add(l1);
+        li.add(l2);
+        return li;
+
+
         
     }
 }
