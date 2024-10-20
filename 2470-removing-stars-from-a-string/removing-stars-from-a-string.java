@@ -13,11 +13,10 @@ class Solution {
             }
         }
         StringBuilder sb=new StringBuilder();
-        while(!stack.isEmpty())
+        for(int i=0;i<stack.size();i++)
         {
-            sb.append(stack.peek());
-            stack.pop();
+            sb.append(stack.get(i));
         }
-        return sb.reverse().toString();
+        return sb.toString();
     }
 }
